@@ -2,10 +2,12 @@
 import { Tinytest } from "meteor/tinytest";
 
 // Import and rename a variable exported by uploadcare-widget.js.
-import { name as packageName } from "meteor/uploadcare:uploadcare-widget";
+import uploadcare from "meteor/uploadcare:uploadcare-widget";
 
-// Write your tests here!
-// Here is an example.
-Tinytest.add('uploadcare-widget - example', function (test) {
-  test.equal(packageName, "uploadcare-widget");
+Tinytest.add('uploadcare-widget - uploadcare is object', function (test) {
+  test.equal(typeof uploadcare, "object");
+});
+
+Tinytest.add('uploadcare-widget - uploadcare has Widget function', function (test) {
+  test.equal(typeof uploadcare.Widget, "function");
 });

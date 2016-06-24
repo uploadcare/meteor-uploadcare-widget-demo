@@ -24,5 +24,5 @@ Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
   api.use('uploadcare:uploadcare-widget');
-  api.mainModule('uploadcare-widget-tests.js');
+  api.mainModule('uploadcare-widget-tests.js', 'client');
 });
