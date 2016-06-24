@@ -1,3 +1,7 @@
+Npm.depends({
+  'uploadcare-widget': '2.9.0'
+});
+
 Package.describe({
   name: 'uploadcare:uploadcare-widget',
   version: '0.0.1',
@@ -13,7 +17,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.3.4');
   api.use('ecmascript');
-  api.mainModule('uploadcare-widget.js');
+  api.mainModule('uploadcare-widget.js', 'client');
 });
 
 Package.onTest(function(api) {
