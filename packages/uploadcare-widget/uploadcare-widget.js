@@ -1,5 +1,9 @@
-// Write your package code here!
+import uploadcare from 'uploadcare-widget';
 
-// Variables exported by this module can be imported by other packages and
-// applications. See uploadcare-widget-tests.js for an example of importing.
-export const name = 'uploadcare-widget';
+const meteorUploadcareSettings = ((Meteor.settings || {}).public || {}).uploadcare || {};
+
+if(!!meteorUploadcareSettings) {
+  uploadcare.start(meteorUploadcareSettings);
+}
+
+export default uploadcare;
