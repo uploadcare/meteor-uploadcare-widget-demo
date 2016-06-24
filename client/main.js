@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import uploadcare from 'meteor/uploadcare:uploadcare-widget';
 
 import './main.html';
 
