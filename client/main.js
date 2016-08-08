@@ -1,22 +1,29 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import uploadcare from 'meteor/uploadcare:uploadcare-widget';
 
 import './main.html';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
+Template.show.onRendered(function() {
+  let widget = uploadcare.Widget('#file-show');
+
+  widget.onUploadComplete(info => {
+    // Handle uploaded file info.
+    this.uuid.set(info.uuid)
+    this.cdnUrl.set(info.cdnUrl)
+  });
 });
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
+Template.show.onCreated(function() {
+  this.uuid = new ReactiveVar('');
+  this.cdnUrl = new ReactiveVar('');
+});
+
+Template.show.helpers({
+  uuid() {
+    return Template.instance().uuid.get();
   },
-});
-
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
+  cdnUrl() {
+    return Template.instance().cdnUrl.get();
   },
 });

@@ -1,27 +1,25 @@
 <head>
-  <title>try-uploadcare-meteor</title>
+    <title>try-uploadcare-meteor</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-  <div>
-      <input type="hidden" role="uploadcare-uploader">
-  </div>
-  {{> hello}}
-  {{> info}}
+<h1>Welcome to Meteor!</h1>
+{{> show}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+<template name="show">
+    <fieldset>
+        <legend>Show UUID after upload</legend>
+        <div>
+            <label for="file-show">File:</label>
+            <input type="hidden" id="file-show" role="uploadcare-uploader">
+        </div>
+        <p>
+            {{#if uuid}}
+                <a href="{{cdnUrl}}">{{uuid}}</a>
+            {{else}}
+                No UUID, upload a file
+            {{/if}}
+        </p>
+    </fieldset>
 </template>
