@@ -28,3 +28,56 @@ Template.show.helpers({
 	},
 })
 
+
+Template.form.onRendered(function() {
+	let widget = uploadcare.Widget('#file-form')
+
+	widget.onChange(file => {
+		let submitButton = this.find('.new-images [type=submit]')
+
+		if (!file) {
+			submitButton.disabled = true
+		}
+		else {
+			file
+				.done(info => {
+					submitButton.disabled = false
+				})
+				.fail((error, info) => {
+					submitButton.disabled = true
+				})
+		}
+	})
+})
+
+Template.form.onCreated(function() {
+	this.images = new ReactiveVar([])
+})
+
+Template.form.helpers({
+	images() {
+		return Template.instance().images.get()
+	},
+})
+
+Template.form.events({
+	'submit .new-images'(event, instance) {
+		event.preventDefault()
+
+		// Get value from widget
+		const widget = uploadcare.Widget('#file-form')
+		const file = widget.value()
+
+		file
+			.done(info => {
+				const image = info.cdnUrl
+				const images = instance.images.get()
+
+				instance.images.set([...images, image])
+
+				// Clear widget
+				widget.value(null)
+			})
+	},
+})
+
