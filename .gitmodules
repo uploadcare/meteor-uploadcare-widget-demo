@@ -1,3 +1,0 @@
-[submodule "packages/uploadcare-widget"]
-	path = packages/uploadcare-widget
-	url = git@github.com:uploadcare/meteor-uploadcare-widget.git
