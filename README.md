@@ -41,4 +41,4 @@ to [http://localhost:3000](http://localhost:3000) using your browser.
 
 ## Contributors
 
-Current maintainer — [@Zmoki](https://github.com/Zmoki).
+* [@Zmoki](https://github.com/Zmoki)
